@@ -1,0 +1,18 @@
+name: PaymentGuard CI
+on:
+  push:
+  pull_request:
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build API
+        run: dotnet build PaymentGuard.Api/PaymentGuard.Api.csproj --configuration Release
+      - name: Legacy checks
+        run: dotnet run --project PaymentGuard.Checks/PaymentGuard.Checks.csproj --configuration Release
+      - name: xUnit v3 tests
+        run: dotnet test PaymentGuard.Tests/PaymentGuard.Tests.csproj --configuration Release

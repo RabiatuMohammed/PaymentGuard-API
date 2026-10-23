@@ -1,0 +1,25 @@
+# Generated builds and IDE artifacts
+**/bin/
+**/obj/
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Local database files and SQLite journals
+**/App_Data/
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Credentials and local overrides
+.env
+.env.*
+!.env.example
+appsettings.Development.local.json
+
+# Backups
+*.bak
